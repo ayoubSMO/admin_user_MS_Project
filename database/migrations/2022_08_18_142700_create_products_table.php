@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('image') ;
-            $table->unsignedInteger('likes');
+            $table->unsignedInteger('likes')->default(0);
             $table->timestamps();
         });
     }
