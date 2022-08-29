@@ -1,0 +1,9 @@
+POST http://localhost:8000/api/products
+
+Accept: application/json
+Content-Type: application/json
+
+{
+    "title" : "This is the product title ",
+    "image" : "Tshis is the image URL !"
+}
