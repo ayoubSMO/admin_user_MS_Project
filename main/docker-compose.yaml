@@ -1,0 +1,35 @@
+version: '3.8'
+
+networks:
+  webapp:
+
+services:
+  main-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: main_php
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - "8001:8000"
+    networks:
+      - webapp
+    depends_on:
+      - postgres-main
+
+  postgres-main:
+    image: postgres:12.3-alpine
+    container_name: main_postgres
+    restart: unless-stopped
+    ports:
+      - "5434:5432"
+    volumes:
+      - ./docker/postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_HOST_AUTH_METHOD: "trust"
+    networks:
+      - webapp
