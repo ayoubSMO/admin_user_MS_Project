@@ -15,6 +15,6 @@ class TestJob implements ShouldQueue
 
     public function handle()
     {
-        echo 'Event has been handled !! '.PHP_EOL;
+        echo 'waa zbbi ta fii9 m3ana'.PHP_EOL;
     }
 }

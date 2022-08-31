@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\ProductCreation;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,6 +19,7 @@ class productController extends Controller
 
     public function store(Request $request){
         $product = Product::create($request->only('title' ,'image')) ;
+        ProductCreation::dispatch((string)$product);
 
         return response($product ,Response::HTTP_CREATED);
     }

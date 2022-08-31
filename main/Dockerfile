@@ -11,5 +11,4 @@ RUN docker-php-ext-install pdo pdo_pgsql
 WORKDIR /var/www/html
 COPY . .
 RUN composer install
-CMD php artisan serve --host=0.0.0.0
-
+CMD php artisan
