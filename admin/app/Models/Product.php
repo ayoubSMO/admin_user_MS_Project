@@ -14,7 +14,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $likes
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Database\Factories\ProductFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Product newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Product newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Product query()
@@ -30,5 +29,5 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'] ;
+    protected $guarded = ['id'];
 }

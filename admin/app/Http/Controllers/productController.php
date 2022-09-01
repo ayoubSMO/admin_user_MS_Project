@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\ProductCreation;
+use App\Jobs\ProductCreated;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,12 +18,13 @@ class productController extends Controller
     }
 
     public function store(Request $request){
-        $product = Product::create($request->only('title' ,'image')) ;
-        ProductCreation::dispatch((string)$product);
+        $product = Product::create($request->only('title', 'image'));
+
+        ProductCreated::dispatch($product->toArray());
 
         return response($product ,Response::HTTP_CREATED);
     }
-    
+
     public function update($id ,Request $request){
         $product = Product::find($id) ;
         $product->update($request->only('title' ,'image')) ;
