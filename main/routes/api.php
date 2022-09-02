@@ -16,4 +16,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('products',[productController::class,'index']);
-
+Route::post('products/{id}/like', [\App\Http\Controllers\productController::class, 'like']);
