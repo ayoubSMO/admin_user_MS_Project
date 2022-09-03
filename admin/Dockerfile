@@ -10,7 +10,7 @@ RUN docker-php-ext-install pdo pdo_pgsql
 
 WORKDIR /var/www/html
 COPY . .
-RUN composer install
+RUN composer install --ignore-platform-req=ext-sockets
 CMD php artisan serve --host=0.0.0.0
 EXPOSE 8002
 
